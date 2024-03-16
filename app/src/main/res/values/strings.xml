@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">My Threads UI Clone</string>
+    <string name="last_updated">since last refreshed: %S</string>
+    <string name="pull_to_refresh_pull_label">Pulling down!</string>
+    <string name="pull_to_refresh_complete_label">Nothing happen</string>
+    <string name="pull_to_refresh_release_label">Can\'t pull any further!</string>
+    <string name="pull_to_refresh_refreshing_label">Loading~</string>
 </resources>

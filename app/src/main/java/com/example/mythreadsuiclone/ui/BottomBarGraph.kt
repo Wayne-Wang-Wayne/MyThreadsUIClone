@@ -26,6 +26,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
+import com.example.mythreadsuiclone.ui.threadshomescreen.ThreadsHomeScreen
 
 @Composable
 fun ThreadsBottomBarNav(
@@ -64,7 +65,7 @@ fun ThreadsBottomBarNav(
 
 private fun NavGraphBuilder.threadsBottomBarGraph() {
     composable(ThreadsNav.THREADS_HOME_ROUTE) {
-
+        ThreadsHomeScreen()
     }
     composable(ThreadsNav.THREADS_SEARCH_ROUTE) {
 
