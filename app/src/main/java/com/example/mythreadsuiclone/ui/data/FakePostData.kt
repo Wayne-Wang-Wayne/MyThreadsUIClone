@@ -4,7 +4,7 @@ import com.example.mythreadsuiclone.ui.data.FakeUserData.Companion.fakeUserData
 
 class FakePostData {
     companion object {
-        val postData = listOf(
+        val homeListData = listOf(
             PostData(
                 postID = "1",
                 userData = fakeUserData["1"]!!,
@@ -38,6 +38,8 @@ class FakePostData {
                 commentCount = 20,
                 comments = listOf()
             ),
+            fakeUserData.values.toList()
+            ,
             PostData(
                 postID = "3",
                 userData = fakeUserData["3"]!!,

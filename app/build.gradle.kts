@@ -64,6 +64,7 @@ dependencies {
     implementation(libs.androidx.material)
     implementation(libs.accompanist.systemuicontroller)
     implementation(libs.androidx.lifecycle.runtime.compose)
+    implementation(libs.androidx.constraintlayout.compose)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
