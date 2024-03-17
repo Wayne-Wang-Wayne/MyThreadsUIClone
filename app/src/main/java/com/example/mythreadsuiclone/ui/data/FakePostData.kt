@@ -90,7 +90,7 @@ class FakePostData {
             val images = mutableListOf<String>()
             repeat(imageCount) {
                 val imageIndex = (1..100).random() // 隨機選擇一張風景圖片
-                images.add("https://picsum.photos/600/400?random=$imageIndex")
+                images.add("https://picsum.photos/400/800?random=$imageIndex")
             }
             return images
         }
