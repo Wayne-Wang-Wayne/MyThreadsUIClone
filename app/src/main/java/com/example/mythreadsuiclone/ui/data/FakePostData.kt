@@ -86,7 +86,7 @@ class FakePostData {
         )
 
         private fun generateRandomSceneryImages(): List<String> {
-            val imageCount = (1..3).random() // 隨機生成1~3張照片
+            val imageCount = (0..5).random() // 隨機生成1~3張照片
             val images = mutableListOf<String>()
             repeat(imageCount) {
                 val imageIndex = (1..100).random() // 隨機選擇一張風景圖片
