@@ -13,6 +13,7 @@ class FakePostData {
                 postImageUrl = generateRandomSceneryImages(),
                 likeCount = 100,
                 commentCount = 20,
+                isLiked = false,
                 comments = listOf(
                     CommentData(
                         commentID = "1",
@@ -36,6 +37,7 @@ class FakePostData {
                 postImageUrl = generateRandomSceneryImages(),
                 likeCount = 100,
                 commentCount = 20,
+                isLiked = true,
                 comments = listOf()
             ),
             fakeUserData.values.toList()
@@ -48,6 +50,7 @@ class FakePostData {
                 postImageUrl = generateRandomSceneryImages(),
                 likeCount = 100,
                 commentCount = 20,
+                isLiked = true,
                 comments = listOf(
                     CommentData(
                         commentID = "3",
@@ -71,6 +74,7 @@ class FakePostData {
                 postImageUrl = generateRandomSceneryImages(),
                 likeCount = 100,
                 commentCount = 20,
+                isLiked = false,
                 comments = listOf()
             ),
             PostData(
@@ -81,6 +85,7 @@ class FakePostData {
                 postImageUrl = generateRandomSceneryImages(),
                 likeCount = 100,
                 commentCount = 20,
+                isLiked = false,
                 comments = listOf()
             ),
         )

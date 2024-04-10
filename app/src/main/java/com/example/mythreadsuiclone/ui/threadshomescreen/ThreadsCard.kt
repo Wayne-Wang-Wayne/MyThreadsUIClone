@@ -17,7 +17,7 @@ fun ThreadsCard(
     ConstraintLayout(
         modifier = modifier.fillMaxWidth()
     ) {
-        val (userAvatar, userName, editButton, postTime, postContent, postPics) = createRefs()
+        val (userAvatar, userName, editButton, postTime, postContent, postPics, cardFunRow) = createRefs()
 
         UserAvatar(
             avatarUrl = postData.userData.userAvatarUrl,
@@ -59,7 +59,8 @@ fun ThreadsCard(
                 width = Dimension.fillToConstraints
             }
         )
-        if (postData.postImageUrl.isNotEmpty()) {
+        val isPicExist = postData.postImageUrl.isNotEmpty()
+        if (isPicExist) {
             PostPictures(
                 postImageUrl = postData.postImageUrl,
                 modifier = Modifier.constrainAs(postPics) {
@@ -68,6 +69,21 @@ fun ThreadsCard(
                 }
             )
         }
-        CardFunctionRow()
+        CardFunctionRow(
+            likeCount = postData.likeCount,
+            isLiked = postData.isLiked,
+            commentCount = postData.commentCount,
+            repostCount = 0,
+            modifier = Modifier.constrainAs(cardFunRow) {
+                if (isPicExist) {
+                    top.linkTo(postPics.bottom, margin = 10.dp)
+                } else {
+                    top.linkTo(postContent.bottom, margin = 10.dp)
+                }
+                start.linkTo(userName.start)
+                end.linkTo(parent.end, margin = 50.dp)
+                width = Dimension.fillToConstraints
+            }
+        )
     }
 }

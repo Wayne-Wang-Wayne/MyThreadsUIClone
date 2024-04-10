@@ -8,5 +8,6 @@ data class PostData (
     val postImageUrl: List<String>,
     val likeCount: Int,
     val commentCount: Int,
+    val isLiked: Boolean,
     val comments: List<CommentData>,
 )
