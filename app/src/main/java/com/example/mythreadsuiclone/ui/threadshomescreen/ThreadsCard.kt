@@ -63,9 +63,8 @@ fun ThreadsCard(
             PostPictures(
                 postImageUrl = postData.postImageUrl,
                 modifier = Modifier.constrainAs(postPics) {
-                    top.linkTo(postContent.bottom, margin = 5.dp)
+                    top.linkTo(postContent.bottom, margin = 20.dp)
                     start.linkTo(parent.start)
-                    end.linkTo(parent.end)
                 }
             )
         }

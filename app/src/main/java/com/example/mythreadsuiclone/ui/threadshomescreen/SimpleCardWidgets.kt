@@ -3,7 +3,9 @@ package com.example.mythreadsuiclone.ui.threadshomescreen
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -76,7 +78,11 @@ fun PostContent(postContent: String, modifier: Modifier) {
 fun PostPictures(
     postImageUrl: List<String>, modifier: Modifier = Modifier
 ) {
-    LazyRow(modifier = modifier.height(200.dp)) {
+    LazyRow(
+        contentPadding = PaddingValues(start = 58.dp, end = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.height(200.dp)
+    ) {
         items(postImageUrl, key = {url -> url}) { url ->
             PostImage(
                 imageUrl = url,
@@ -94,8 +100,8 @@ fun PostImage(
 ) {
     Box(
         modifier = modifier
-            .width(120.dp)
-            .aspectRatio(1.2f / 2f)
+            .height(250.dp)
+            .aspectRatio(3f / 4f)
             .clickable { onClick() },
         contentAlignment = Alignment.Center
     ) {
