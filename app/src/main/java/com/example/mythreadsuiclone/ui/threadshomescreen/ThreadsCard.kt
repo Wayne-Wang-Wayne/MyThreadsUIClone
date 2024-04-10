@@ -68,5 +68,6 @@ fun ThreadsCard(
                 }
             )
         }
+        CardFunctionRow()
     }
 }
