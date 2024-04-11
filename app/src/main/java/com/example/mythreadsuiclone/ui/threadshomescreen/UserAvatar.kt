@@ -18,6 +18,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
+import com.example.mythreadsuiclone.ui.theme.CardBackgroundColor
 
 @Composable
 fun UserAvatar(
@@ -33,7 +34,10 @@ fun UserAvatar(
         }
     ) {
         // 圓形頭像
-        CircularAvatar(avatarUrl = avatarUrl)
+        CircularAvatar(
+            avatarUrl = avatarUrl,
+            modifier = Modifier.size(50.dp)
+        )
 
         // 加號圖標
         Image(
@@ -53,12 +57,10 @@ fun CircularAvatar(
     avatarUrl: String,
     modifier: Modifier = Modifier,
 ) {
-    // 加載頭像圖片
     Image(
         painter = rememberAsyncImagePainter(avatarUrl),
         contentDescription = null,
-        modifier = modifier
-            .size(50.dp) // 調整頭像大小
+        modifier = modifier // 調整頭像大小
             .clip(CircleShape), // 將頭像裁剪為圓形
     )
 }
