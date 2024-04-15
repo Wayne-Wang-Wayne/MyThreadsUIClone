@@ -1,15 +1,20 @@
 package com.example.mythreadsuiclone.ui.threadshomescreen
 
+import android.provider.CalendarContract.Colors
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.material.icons.rounded.Add
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -36,6 +41,7 @@ fun UserAvatar(
         // 圓形頭像
         CircularAvatar(
             avatarUrl = avatarUrl,
+            isOfficial = false,
             modifier = Modifier.size(50.dp)
         )
 
@@ -55,12 +61,28 @@ fun UserAvatar(
 @Composable
 fun CircularAvatar(
     avatarUrl: String,
+    isOfficial: Boolean,
     modifier: Modifier = Modifier,
 ) {
-    Image(
-        painter = rememberAsyncImagePainter(avatarUrl),
-        contentDescription = null,
-        modifier = modifier // 調整頭像大小
-            .clip(CircleShape), // 將頭像裁剪為圓形
-    )
+    Box(
+        modifier = modifier
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(avatarUrl),
+            contentDescription = null,
+            modifier = Modifier.fillMaxSize()
+                .clip(CircleShape), // 將頭像裁剪為圓形
+        )
+        if (isOfficial) {
+            Icon(
+                imageVector = Icons.Default.CheckCircle,
+                tint = Color(0xFF1DA1F2),
+                contentDescription = null,
+                modifier = Modifier
+                    .size(20.dp)
+                    .align(Alignment.BottomStart)
+            )
+        }
+    }
+
 }
