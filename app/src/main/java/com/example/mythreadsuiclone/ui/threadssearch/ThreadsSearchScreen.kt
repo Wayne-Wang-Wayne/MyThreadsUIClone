@@ -4,6 +4,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -30,7 +32,8 @@ fun ThreadsSearchScreen(
     val searchDataList = fakeSearchData.searchDataList
 
     Column(
-        modifier = modifier.fillMaxSize()
+        modifier = modifier
+            .fillMaxSize()
             .padding(16.dp)
     ) {
         Text(
@@ -42,8 +45,21 @@ fun ThreadsSearchScreen(
         SearchBar(
             searchString = searchString,
             onSearchStringChange = fakeSearchData::onSearchStringChange,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier
+                .fillMaxWidth()
                 .padding(vertical = 4.dp),
         )
+        LazyColumn(modifier = Modifier.fillMaxWidth()) {
+            itemsIndexed(searchDataList, key = {index, _ -> index}) { _, searchData ->
+                ThreadsSearchCard(
+                    imageUrl = searchData.userData.userAvatarUrl,
+                    title = searchData.userData.userName,
+                    subtitle = searchData.userData.userID,
+                    isFollowed = searchData.isFollowed,
+                    isOfficial = searchData.userData.isOfficial,
+                    followersImages = searchData.userData.followers.map { it.userAvatarUrl }
+                )
+            }
+        }
     }
 }

@@ -24,6 +24,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.mythreadsuiclone.ui.theme.CardBackgroundColor
+import com.example.mythreadsuiclone.ui.threadssearch.BlueCheckCircle
 
 @Composable
 fun UserAvatar(
@@ -70,14 +71,12 @@ fun CircularAvatar(
         Image(
             painter = rememberAsyncImagePainter(avatarUrl),
             contentDescription = null,
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .fillMaxSize()
                 .clip(CircleShape), // 將頭像裁剪為圓形
         )
         if (isOfficial) {
-            Icon(
-                imageVector = Icons.Default.CheckCircle,
-                tint = Color(0xFF1DA1F2),
-                contentDescription = null,
+            BlueCheckCircle(
                 modifier = Modifier
                     .size(20.dp)
                     .align(Alignment.BottomStart)
