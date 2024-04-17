@@ -28,6 +28,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.mythreadsuiclone.ui.data.UserData
 import com.example.mythreadsuiclone.ui.theme.CardBackgroundColor
@@ -95,7 +96,9 @@ fun RecommendedUserCard(
                 Spacer(modifier = Modifier.height(10.dp))
                 Text(
                     text = userData.userName,
-                    color = Color.White
+                    color = Color.White,
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Spacer(modifier = Modifier.height(5.dp))
                 Text(

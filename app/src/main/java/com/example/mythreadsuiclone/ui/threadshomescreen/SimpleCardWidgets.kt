@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Text
@@ -83,7 +84,7 @@ fun PostPictures(
         horizontalArrangement = Arrangement.spacedBy(8.dp),
         modifier = modifier.height(200.dp)
     ) {
-        items(postImageUrl, key = {url -> url}) { url ->
+        itemsIndexed(postImageUrl, key = {index, _ -> index}) { _, url ->
             PostImage(
                 imageUrl = url,
                 modifier = modifier

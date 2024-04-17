@@ -5,4 +5,5 @@ data class UserData (
     val userName: String,
     val userAvatarUrl: String,
     val isOfficial: Boolean,
+    val followers: MutableList<UserData> = mutableListOf(),
 )
