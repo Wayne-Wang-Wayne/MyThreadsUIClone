@@ -1,6 +1,13 @@
 package com.example.mythreadsuiclone.ui.data
 
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+
 class FakeSearchData {
+
+    val searchString: MutableState<String> = mutableStateOf("")
 
     val searchDataList: List<SearchData> = listOf(
         SearchData(
@@ -43,5 +50,22 @@ class FakeSearchData {
             userData = FakeUserData.fakeUserData["10"]!!,
             isFollowed = true
         ),
+        SearchData(
+            userData = FakeUserData.fakeUserData["11"]!!,
+            isFollowed = false
+        ),
     )
+
+    fun onSearchStringChange(newSearchString: String) {
+        searchString.value = newSearchString
+    }
+
+    companion object {
+        @Composable
+        fun rememberFakeSearchData(): FakeSearchData {
+            return remember {
+                FakeSearchData()
+            }
+        }
+    }
 }
