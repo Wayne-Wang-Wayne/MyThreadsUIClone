@@ -12,6 +12,7 @@ import com.example.mythreadsuiclone.ui.ThreadsNav.DETAIL_ROUTE
 import com.example.mythreadsuiclone.ui.ThreadsNav.POST_ROUTE
 import com.example.mythreadsuiclone.ui.ThreadsNav.SEARCH_ROUTE
 import com.example.mythreadsuiclone.ui.ThreadsNav.THREADS_ROUTE
+import com.example.mythreadsuiclone.ui.newpost.NewPostScreen
 
 @Composable
 fun MyNavGraph(
@@ -45,7 +46,9 @@ fun NavGraphBuilder.threadsGraph(
         ThreadsBottomBarNav(navAction, bottomBarNavController)
     }
     composable(POST_ROUTE) {
-
+        NewPostScreen(
+            onExit = { navAction.popBack() }
+        )
     }
     composable(DETAIL_ROUTE) {
 
