@@ -1,6 +1,7 @@
 package com.example.mythreadsuiclone.ui.threadshomescreen
 
 
+import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -28,17 +29,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import com.example.mythreadsuiclone.utils.timeStampToReadableDate
 
 @Composable
-fun UserName(userName: String, modifier: Modifier) {
+fun UserName(userName: String, modifier: Modifier = Modifier) {
     Text(
         text = userName,
         style = MaterialTheme.typography.bodyMedium,
         color = MaterialTheme.colorScheme.onSurface,
+        fontWeight = FontWeight.Bold,
         modifier = modifier
     )
 }
@@ -94,6 +97,24 @@ fun PostPictures(
 }
 
 @Composable
+fun PostPictures(
+    postImageUrl: List<Uri>, modifier: Modifier = Modifier
+) {
+    LazyRow(
+        contentPadding = PaddingValues(start = 58.dp, end = 20.dp),
+        horizontalArrangement = Arrangement.spacedBy(8.dp),
+        modifier = modifier.height(200.dp)
+    ) {
+        itemsIndexed(postImageUrl, key = {index, _ -> index}) { _, url ->
+            PostImage(
+                imageUri = url,
+                modifier = modifier
+            )
+        }
+    }
+}
+
+@Composable
 fun PostImage(
     imageUrl: String,
     modifier: Modifier,
@@ -115,7 +136,30 @@ fun PostImage(
             contentScale = ContentScale.Crop
         )
     }
+}
 
+@Composable
+fun PostImage(
+    imageUri: Uri,
+    modifier: Modifier,
+    onClick: () -> Unit = {}
+) {
+    Box(
+        modifier = modifier
+            .height(250.dp)
+            .aspectRatio(3f / 4f)
+            .clickable { onClick() },
+        contentAlignment = Alignment.Center
+    ) {
+        Image(
+            painter = rememberAsyncImagePainter(imageUri),
+            contentDescription = null,
+            modifier = Modifier
+                .fillMaxSize()
+                .clip(RoundedCornerShape(8.dp)),
+            contentScale = ContentScale.Crop
+        )
+    }
 }
 
 @Composable

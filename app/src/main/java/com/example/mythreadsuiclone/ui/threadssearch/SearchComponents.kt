@@ -35,6 +35,7 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import com.example.mythreadsuiclone.ui.commonComponents.HalfCoverRow
 import com.example.mythreadsuiclone.ui.threadshomescreen.CircularAvatar
+import com.example.mythreadsuiclone.ui.threadshomescreen.UserName
 
 @Composable
 fun SearchBar(
@@ -101,10 +102,8 @@ fun ThreadsSearchCard(
                     start.linkTo(parent.start, margin = 8.dp)
                 }
         )
-        Text(
-            text = title,
-            color = Color.White,
-            fontSize = 16.sp,
+        UserName(
+            userName = title,
             modifier = Modifier.constrainAs(titleRef) {
                 top.linkTo(userAvatar.top)
                 start.linkTo(userAvatar.end, margin = 8.dp)
