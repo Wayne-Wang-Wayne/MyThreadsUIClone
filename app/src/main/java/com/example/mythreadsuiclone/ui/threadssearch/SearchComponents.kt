@@ -3,9 +3,11 @@ package com.example.mythreadsuiclone.ui.threadssearch
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -30,6 +32,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.times
 import androidx.constraintlayout.compose.ConstraintLayout
+import androidx.constraintlayout.compose.Dimension
 import com.example.mythreadsuiclone.ui.commonComponents.HalfCoverRow
 import com.example.mythreadsuiclone.ui.threadshomescreen.CircularAvatar
 
@@ -85,6 +88,7 @@ fun ThreadsSearchCard(
 ) {
     ConstraintLayout(
         modifier = modifier.fillMaxWidth()
+            .padding(vertical = 8.dp, horizontal = 4.dp)
     ) {
         val (userAvatar, titleRef, subtitleRef, followButton, followersImagesRow, blueCheckRef, bottomDividerRef) = createRefs()
         CircularAvatar(
@@ -147,9 +151,10 @@ fun ThreadsSearchCard(
             thickness = 0.5.dp,
             modifier = Modifier
                 .constrainAs(bottomDividerRef) {
-                    top.linkTo(followersImagesRow.bottom, margin = 8.dp)
+                    top.linkTo(followersImagesRow.bottom, margin = 16.dp)
                     start.linkTo(titleRef.start)
                     end.linkTo(parent.end)
+                    width = Dimension.fillToConstraints
                 }
         )
     }
@@ -161,9 +166,7 @@ fun FollowersRow(
     modifier: Modifier = Modifier
 ) {
     Row(modifier = modifier) {
-        HalfCoverRow(
-            modifier = Modifier.size(20.dp)
-        ) {
+        HalfCoverRow {
             followersImages.take(2).forEachIndexed { _, imageUrl ->
                 CircularAvatar(
                     avatarUrl = imageUrl,
@@ -174,6 +177,7 @@ fun FollowersRow(
                 )
             }
         }
+        Spacer(modifier = Modifier.size(4.dp))
         Text(
             text = "${followersImages.size} 位粉絲",
             color = Color.White,

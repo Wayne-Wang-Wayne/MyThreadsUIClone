@@ -17,7 +17,8 @@ fun HalfCoverRow(
             measurable.measure(constraints)
         }
         val totalWidth = placeables.sumOf { it.width / 2 } + placeables[0].width / 2
-        layout(totalWidth, constraints.maxHeight) {
+        val totalHeight = placeables.maxOf { it.height }
+        layout(totalWidth, totalHeight) {
             var xPosition = 0
 
             placeables.forEach { placeable ->
